@@ -55,7 +55,7 @@
                                             <td><?php echo $row['nom'] ?> </td>
                                             <td><?php echo $row['prenom'] ?></td>
                                             <td><?php echo $row['Email'] ?></td>
-                                            <td><?php echo $row['id_voiture']; ?></td> <!-- 'id_voiture' contient maintenant le 'Num_vehicule' -->
+                                            <td><?php echo $row['id']; ?></td> <!-- 'id_voiture' contient maintenant le 'Num_vehicule' -->
                                             <td><?php echo $row['date_vonte'] ?></td>
                                             <td>
                                                 <a href="client/edit/<?= $row['id'] ?>" class="btn btn-square btn-primary m-2"><i class="fa fa-edit"></i>

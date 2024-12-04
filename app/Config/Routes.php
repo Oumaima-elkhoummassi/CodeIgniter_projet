@@ -6,18 +6,37 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-$routes->get('/', 'Home::dashboard');
 
-$routes->get('form', 'Home::form');
-$routes->get('table', 'Home::table');
-$routes->post('SaveClient', 'Home::SaveClient');
-$routes->get('client/edit/(:num)', 'Home::edit/$1');
-$routes->post('client/update/(:num)', 'Home::updateClient/$1'); // Pour traiter la mise à jour
-$routes->get('/client/delete/(:num)', 'Home::deleteClient/$1'); //
-$routes->get('client/pdf/(:num)', 'Home::generateInvoice/$1');
-
-
+$routes->get('/', 'Auth::login');
+$routes->get('/register', 'Auth::register');
+$routes->post('/register', 'Auth::registerSubmit');
+$routes->get('/login', 'Auth::login');
+$routes->post('/login', 'Auth::loginSubmit');
+$routes->get('/logout', 'Auth::logout');
+$routes->get('/dashboard', 'Auth::dashboard', ['filter' => 'auth']);  // Apply auth filter to dashboard
+$routes->get('/Home', 'Client::dashboard');
 
 
+$routes->get('/voiture', 'Voiture::index');
+$routes->get('/voiture/create', 'Voiture::create');
+$routes->post('/voiture/store', 'Voiture::store');
+$routes->get('/voiture/show/(:any)', 'Voiture::show/$1');
+$routes->get('/voiture/delete/(:any)', 'Voiture::delete/$1');
+$routes->get('/voiture/table', 'Voiture::index');
+$routes->get('/voiture/table', 'Voiture::index');
 
 
+
+
+$routes->get('/client', 'Client::form');               // Show the client form
+$routes->get('client/table', 'Client::table');         // Show the table of clients
+$routes->post('/client/SaveClient', 'Client::SaveClient'); // Save a new client
+$routes->get('/client/edit/(:num)', 'Client::edit/$1');  // Edit a client by ID
+$routes->post('/client/update/(:num)', 'Client::updateClient/$1'); // Update a client by ID
+$routes->get('/client/delete/(:num)', 'Client::deleteClient/$1'); // Delete a client by ID
+$routes->get('/client/pdf/(:num)', 'Client::generateInvoice/$1');    // Search for clients by name
+
+
+
+//$routes->get('/TP4', 'TP4::index');
+//$routes->post('/TP4/ajout', 'TP4::ajout');
